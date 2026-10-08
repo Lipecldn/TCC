@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Doces da Geo</title>
+
+    <style>
+
+        /* ==============================
+           CONFIGURAÇÕES GERAIS
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff0f3;
+            color: #7d174d;
+            overflow-x: hidden;
+        }
+
+
+        /* ==============================
+           CABEÇALHO
+        ============================== */
+
+        header {
+            position: relative;
+            width: 100%;
+            height: 92px;
+
+            background: linear-gradient(
+                90deg,
+                #741344,
+                #8f1754,
+                #72133f
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            z-index: 10;
+        }
+
+
+        /* detalhe ondulado inferior */
+
+        header::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -13px;
+
+            width: 100%;
+            height: 22px;
+
+            background:
+                radial-gradient(
+                    circle at 12px -1px,
+                    #fff0f3 12px,
+                    transparent 13px
+                );
+
+            background-size: 24px 24px;
+            background-repeat: repeat-x;
+        }
+
+
+        /* ==============================
+           LOGO
+        ============================== */
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            display: flex;
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+        .logo-nome {
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 31px;
+            font-style: italic;
+            font-weight: bold;
+
+            letter-spacing: -1px;
+        }
+
+        .logo-frase {
+            margin-top: 5px;
+
+            font-size: 11px;
+            letter-spacing: 1px;
+
+            opacity: 0.95;
+        }
+
+
+        /* ==============================
+           MENU
+        ============================== */
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 42px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            padding: 8px 0;
+
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            opacity: 0.75;
+        }
+
+        nav a.ativo::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background-color: white;
+        }
+
+
+        /* Instagram */
+
+        .instagram {
+            font-size: 23px;
+            line-height: 1;
+        }
+
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            position: relative;
+
+            min-height: calc(100vh - 92px);
+
+            display: flex;
+            align-items: center;
+
+            padding: 65px 7% 80px;
+
+            background:
+                radial-gradient(
+                    circle at 12% 30%,
+                    rgba(255, 194, 210, 0.45),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(255, 183, 204, 0.45),
+                    transparent 27%
+                ),
+
+                #fff0f3;
+
+            overflow: hidden;
+        }
+
+
+        /* ==============================
+           FORMAS DECORATIVAS
+        ============================== */
+
+        .forma-rosa {
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            left: -240px;
+            bottom: -230px;
+
+            background-color: #f9d5df;
+
+            border-radius: 50%;
+
+            opacity: 0.65;
+        }
+
+        .forma-rosa-direita {
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: -180px;
+            top: 100px;
+
+            background-color: #f7cad7;
+
+            border-radius: 50%;
+
+            opacity: 0.45;
+        }
+
+
+        /* ==============================
+           CONTEÚDO DO HERO
+        ============================== */
+
+        .hero-conteudo {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 70px;
+        }
+
+
+        /* ==============================
+           TEXTO
+        ============================== */
+
+        .texto {
+            width: 48%;
+            max-width: 570px;
+        }
+
+        .boas-vindas {
+            display: inline-block;
+
+            margin-bottom: 13px;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 25px;
+            font-style: italic;
+
+            color: #9d235f;
+        }
+
+
+        .titulo {
+            position: relative;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: clamp(48px, 5.4vw, 76px);
+
+            line-height: 0.98;
+
+            color: #791344;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 16px;
+        }
+
+
+        /* pequeno detalhe embaixo do título */
+
+        .detalhe-titulo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            width: 210px;
+
+            margin: 12px 0 27px;
+        }
+
+        .detalhe-titulo span {
+            display: block;
+
+            height: 2px;
+
+            flex: 1;
+
+            background-color: #b32668;
+        }
+
+        .detalhe-titulo i {
+            font-style: normal;
+
+            font-size: 23px;
+
+            color: #a51f60;
+        }
+
+
+        .descricao {
+            max-width: 500px;
+
+            font-size: 17px;
+            line-height: 1.75;
+
+            color: #49363f;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* ==============================
+           BOTÃO
+        ============================== */
+
+        .botao-pedido {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 17px;
+
+            min-width: 285px;
+
+            padding: 17px 28px;
+
+            border: none;
+            border-radius: 50px;
+
+            background: linear-gradient(
+                135deg,
+                #a81d61,
+                #771242
+            );
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            letter-spacing: 0.5px;
+
+            text-decoration: none;
+
+            box-shadow:
+                0 10px 25px rgba(122, 20, 67, 0.28);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+        }
+
+
+        .botao-pedido:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 30px rgba(122, 20, 67, 0.35);
+        }
+
+
+        .icone-botao {
+            font-size: 23px;
+        }
+
+
+        .seta {
+            font-size: 23px;
+
+            transition: transform 0.25s;
+        }
+
+        .botao-pedido:hover .seta {
+            transform: translateX(5px);
+        }
+
+
+        /* ==============================
+           DECORAÇÕES DO TEXTO
+        ============================== */
+
+        .coracao-1 {
+            position: absolute;
+
+            top: 100px;
+            right: -5px;
+
+            font-size: 38px;
+
+            color: #bb286b;
+
+            transform: rotate(12deg);
+        }
+
+        .coracao-2 {
+            position: absolute;
+
+            bottom: 22px;
+            right: 75px;
+
+            font-size: 28px;
+
+            color: #d34a82;
+
+            transform: rotate(-12deg);
+        }
+
+
+        /* ==============================
+           ÁREA DA IMAGEM
+        ============================== */
+
+        .imagem-area {
+            position: relative;
+
+            width: 51%;
+            max-width: 620px;
+
+            min-height: 560px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* moldura atrás da foto */
+
+        .moldura {
+            position: absolute;
+
+            width: 92%;
+            height: 88%;
+
+            right: 0;
+
+            background: linear-gradient(
+                145deg,
+                #e98cae,
+                #9b205b
+            );
+
+            border-radius:
+                45% 55% 50% 50% /
+                45% 40% 60% 55%;
+
+            transform: rotate(4deg);
+
+            opacity: 0.9;
+        }
+
+
+        /* imagem principal */
+
+        .foto-produtos {
+            position: relative;
+            z-index: 2;
+
+            width: 91%;
+            height: 500px;
+
+            object-fit: cover;
+
+            border-radius:
+                48% 52% 46% 54% /
+                44% 43% 57% 56%;
+
+            box-shadow:
+                0 20px 40px rgba(91, 16, 53, 0.20);
+
+            border: 7px solid rgba(255, 255, 255, 0.45);
+        }
+
+
+        /* ==============================
+           ELEMENTOS FLUTUANTES
+        ============================== */
+
+        .decoracao {
+            position: absolute;
+
+            z-index: 4;
+
+            color: #a61d61;
+        }
+
+        .decoracao-coracao {
+            top: 80px;
+            right: 5px;
+
+            font-size: 47px;
+
+            transform: rotate(10deg);
+        }
+
+        .decoracao-linha {
+            right: -10px;
+            bottom: 80px;
+
+            width: 100px;
+            height: 45px;
+
+            border-bottom: 3px solid #c73477;
+
+            border-radius: 50%;
+        }
+
+        .decoracao-linha::after {
+            content: "♡";
+
+            position: absolute;
+
+            right: -4px;
+            bottom: -15px;
+
+            font-size: 30px;
+        }
+
+
+        /* ==============================
+           TEXTO PEQUENO NA FOTO
+        ============================== */
+
+        .selo {
+            position: absolute;
+
+            z-index: 5;
+
+            left: 15px;
+            bottom: 55px;
+
+            width: 125px;
+            height: 125px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 18px;
+
+            border-radius: 50%;
+
+            background-color: #fff5f7;
+
+            color: #8a174e;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            font-size: 14px;
+            font-style: italic;
+
+            line-height: 1.3;
+
+            box-shadow:
+                0 8px 25px rgba(103, 20, 59, 0.18);
+
+            transform: rotate(-8deg);
+        }
+
+
+        /* ==============================
+           RESPONSIVIDADE
+        ============================== */
+
+        @media (max-width: 1000px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+            .hero {
+                padding: 55px 5% 70px;
+            }
+
+            .hero-conteudo {
+                gap: 30px;
+            }
+
+            .texto {
+                width: 50%;
+            }
+
+            .imagem-area {
+                width: 50%;
+                min-height: 480px;
+            }
+
+            .foto-produtos {
+                height: 430px;
+            }
+
+            .titulo {
+                font-size: 55px;
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            header {
+                height: auto;
+
+                padding: 20px 7%;
+
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+
+            nav {
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 25px;
+            }
+
+
+            .hero {
+                min-height: auto;
+
+                padding: 55px 7% 70px;
+            }
+
+
+            .hero-conteudo {
+                flex-direction: column;
+
+                text-align: center;
+
+                gap: 35px;
+            }
+
+
+            .texto {
+                width: 100%;
+
+                max-width: 600px;
+            }
+
+
+            .boas-vindas {
+                font-size: 22px;
+            }
+
+
+            .titulo {
+                font-size: clamp(45px, 13vw, 65px);
+
+                letter-spacing: -1px;
+            }
+
+
+            .descricao {
+                margin-left: auto;
+                margin-right: auto;
+
+                font-size: 16px;
+            }
+
+
+            .detalhe-titulo {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .imagem-area {
+                width: 100%;
+
+                min-height: 390px;
+
+                max-width: 500px;
+            }
+
+
+            .foto-produtos {
+                width: 90%;
+
+                height: 380px;
+            }
+
+
+            .selo {
+                left: 0;
+                bottom: 25px;
+
+                width: 100px;
+                height: 100px;
+
+                font-size: 12px;
+            }
+
+
+            .coracao-1 {
+                display: none;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .logo-nome {
+                font-size: 26px;
+            }
+
+            .logo-frase {
+                font-size: 9px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .instagram {
+                font-size: 19px;
+            }
+
+
+            .hero {
+                padding-top: 45px;
+            }
+
+
+            .titulo {
+                font-size: 46px;
+            }
+
+
+            .botao-pedido {
+                width: 100%;
+
+                min-width: 0;
+            }
+
+
+            .imagem-area {
+                min-height: 320px;
+            }
+
+
+            .foto-produtos {
+                height: 310px;
+            }
+
+
+            .selo {
+                width: 85px;
+                height: 85px;
+
+                font-size: 10px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         CABEÇALHO
+    ============================== -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-nome">
+                Doces da Geo
+            </span>
+
+            <span class="logo-frase">
+                Doces momentos, sempre!
+            </span>
+
+        </a>
+
+
+        <nav>
+
+            <a href="index.html" class="ativo">
+                Início
+            </a>
+
+            <a href="pedido.html">
+                Faça seu pedido
+            </a>
+
+            <a
+                href="https://www.instagram.com/docesdageo.ssb/"
+                target="_blank"
+                class="instagram"
+                aria-label="Instagram da Doces da Geo"
+            >
+                ◎
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ==============================
+         PÁGINA PRINCIPAL
+    ============================== -->
+
+    <main class="hero">
+
+
+        <!-- formas decorativas -->
+
+        <div class="forma-rosa"></div>
+
+        <div class="forma-rosa-direita"></div>
+
+
+        <div class="hero-conteudo">
+
+
+            <!-- ==============================
+                 TEXTO
+            ============================== -->
+
+            <section class="texto">
+
+                <span class="boas-vindas">
+                    Seja bem-vindo à
+                </span>
+
+
+                <h1 class="titulo">
+                    Doces da Geo
+                </h1>
+
+
+                <div class="detalhe-titulo">
+
+                    <span></span>
+
+                    <i>♡</i>
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="descricao">
+
+                    Aqui, cada doce é preparado com muito carinho
+                    para transformar seus momentos em lembranças
+                    ainda mais especiais.
+
+                    <br><br>
+
+                    Escolha seus produtos, personalize seu pedido
+                    e deixe a sua comemoração ainda mais gostosa.
+
+                </p>
+
+
+                <a
+                    href="pedido.html"
+                    class="botao-pedido"
+                    id="botaoPedido"
+                >
+
+                    <span class="icone-botao">
+                        ♡
+                    </span>
+
+                    <span>
+                        FAÇA SEU PEDIDO
+                    </span>
+
+                    <span class="seta">
+                        →
+                    </span>
+
+                </a>
+
+
+                <!-- decoração -->
+
+                <span class="coracao-1">
+                    ♡
+                </span>
+
+                <span class="coracao-2">
+                    ♡
+                </span>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 IMAGEM
+            ============================== -->
+
+            <section class="imagem-area">
+
+
+                <div class="moldura"></div>
+
+
+                <!--
+                    TROQUE O NOME DA IMAGEM ABAIXO
+                    pela foto que vocês vão usar.
+
+                    Exemplo:
+                    imagens/bolo.jpg
+                    imagens/doces.jpg
+                    imagens/foto-principal.jpg
+                -->
+
+                <img
+                    src="imagens/ChatGPT Image 8 de out. de 2026, 15_01_29.png"
+                    alt="Bolos e doces da Doces da Geo"
+                    class="foto-produtos"
+                >
+
+
+                <div class="selo">
+                    Feito com carinho
+                    para tornar seu
+                    momento especial ♡
+                </div>
+
+
+                <span class="decoracao decoracao-coracao">
+                    ♡
+                </span>
+
+                <span class="decoracao decoracao-linha"></span>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
+
+    <script>
+
+        /*
+         * BOTÃO FAÇA SEU PEDIDO
+         *
+         * O link já direciona para pedido.html.
+         * Este script adiciona uma pequena animação
+         * antes da mudança de página.
+         */
+
+        const botaoPedido =
+            document.getElementById("botaoPedido");
+
+
+        botaoPedido.addEventListener("click", function(event) {
+
+            event.preventDefault();
+
+            botaoPedido.style.transform =
+                "scale(0.96)";
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "pedido.html";
+
+            }, 150);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
