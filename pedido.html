@@ -1,0 +1,3691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faça seu pedido - Doces da Geo</title>
+
+
+    <style>
+
+        /* =========================================
+           CONFIGURAÇÕES GERAIS
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background-color: #fff0f3;
+
+            color: #68143f;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           CABEÇALHO
+        ========================================= */
+
+        header {
+            position: relative;
+
+            width: 100%;
+            height: 92px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #741344,
+                    #8f1754,
+                    #72133f
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 7%;
+
+            z-index: 20;
+        }
+
+
+        header::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -13px;
+
+            width: 100%;
+            height: 22px;
+
+            background:
+                radial-gradient(
+                    circle at 12px -1px,
+                    #fff0f3 12px,
+                    transparent 13px
+                );
+
+            background-size: 24px 24px;
+
+            background-repeat: repeat-x;
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo {
+            color: white;
+
+            text-decoration: none;
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+        .logo-nome {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 31px;
+
+            font-style: italic;
+
+            font-weight: bold;
+
+            letter-spacing: -1px;
+        }
+
+        .logo-frase {
+            margin-top: 5px;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+
+            opacity: 0.95;
+        }
+
+
+        /* =========================================
+           MENU
+        ========================================= */
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 42px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            padding: 8px 0;
+
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            opacity: 0.75;
+        }
+
+        nav a.ativo::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background-color: white;
+        }
+
+        .instagram {
+            font-size: 23px;
+        }
+
+
+        /* =========================================
+           ÁREA PRINCIPAL
+        ========================================= */
+
+        .pagina {
+            position: relative;
+
+            padding: 75px 7% 80px;
+
+            min-height: 100vh;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           DECORAÇÕES DO FUNDO
+        ========================================= */
+
+        .forma-fundo-1 {
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            left: -270px;
+            top: 370px;
+
+            background-color: #f8d3df;
+
+            border-radius: 50%;
+
+            opacity: 0.65;
+
+            z-index: 0;
+        }
+
+        .forma-fundo-2 {
+            position: absolute;
+
+            width: 350px;
+            height: 350px;
+
+            right: -220px;
+            top: 120px;
+
+            background-color: #f8ccd9;
+
+            border-radius: 50%;
+
+            opacity: 0.45;
+
+            z-index: 0;
+        }
+
+
+        /* =========================================
+           INTRODUÇÃO
+        ========================================= */
+
+        .introducao {
+            position: relative;
+
+            max-width: 1250px;
+
+            margin: 0 auto 55px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 60px;
+
+            z-index: 2;
+        }
+
+
+        .intro-texto {
+            width: 48%;
+
+            max-width: 590px;
+        }
+
+
+        .mini-titulo {
+            display: inline-block;
+
+            margin-bottom: 10px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+
+            font-style: italic;
+
+            color: #a51f60;
+        }
+
+
+        .titulo-principal {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: clamp(43px, 5vw, 68px);
+
+            line-height: 1;
+
+            color: #791344;
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .titulo-principal span {
+            color: #b3276c;
+        }
+
+
+        .descricao-principal {
+            color: #4d3a42;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+
+            max-width: 560px;
+        }
+
+
+        /* =========================================
+           ÍCONES DOS PRODUTOS
+        ========================================= */
+
+        .categorias {
+            display: flex;
+
+            gap: 0;
+
+            margin-top: 28px;
+        }
+
+
+        .categoria {
+            width: 150px;
+
+            padding: 5px 20px;
+
+            text-align: center;
+
+            border-right:
+                1px solid #d98aa8;
+        }
+
+
+        .categoria:first-child {
+            padding-left: 0;
+        }
+
+
+        .categoria:last-child {
+            border-right: none;
+        }
+
+
+        .categoria-icone {
+            font-size: 28px;
+
+            color: #a71e62;
+
+            margin-bottom: 8px;
+        }
+
+
+        .categoria h3 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 17px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .categoria p {
+            font-size: 12px;
+
+            line-height: 1.4;
+
+            color: #71535f;
+        }
+
+
+        /* =========================================
+           FOTO DA INTRODUÇÃO
+        ========================================= */
+
+        .intro-imagem {
+            position: relative;
+
+            width: 48%;
+
+            max-width: 570px;
+
+            height: 390px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .moldura-imagem {
+            position: absolute;
+
+            width: 94%;
+            height: 94%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ed91b0,
+                    #8e1a53
+                );
+
+            border-radius:
+                45% 55% 48% 52% /
+                43% 42% 58% 57%;
+
+            transform: rotate(3deg);
+        }
+
+
+        .intro-imagem img {
+            position: relative;
+
+            z-index: 2;
+
+            width: 92%;
+            height: 360px;
+
+            object-fit: cover;
+
+            border-radius:
+                47% 53% 44% 56% /
+                45% 42% 58% 55%;
+
+            border:
+                6px solid rgba(255,255,255,0.5);
+
+            box-shadow:
+                0 18px 35px rgba(99, 18, 55, 0.18);
+        }
+
+
+        .frase-foto {
+            position: absolute;
+
+            right: -15px;
+            bottom: 5px;
+
+            z-index: 4;
+
+            width: 135px;
+            height: 135px;
+
+            border-radius: 50%;
+
+            background-color: #fff6f8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #8c174f;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 14px;
+
+            font-style: italic;
+
+            line-height: 1.3;
+
+            box-shadow:
+                0 8px 25px rgba(96, 17, 54, 0.15);
+
+            transform: rotate(5deg);
+        }
+
+
+        /* =========================================
+           ÁREA DOS PEDIDOS
+        ========================================= */
+
+        .area-pedido {
+            position: relative;
+
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                310px;
+
+            gap: 25px;
+
+            align-items: start;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           CARDS
+        ========================================= */
+
+        .produtos {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+        }
+
+
+        .card-produto {
+            background:
+                rgba(255, 248, 250, 0.88);
+
+            border:
+                1px solid #f0bfd0;
+
+            border-radius: 25px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 8px 25px rgba(118, 27, 68, 0.07);
+
+            transition:
+                box-shadow 0.25s,
+                transform 0.25s;
+        }
+
+
+        .card-produto:hover {
+            box-shadow:
+                0 12px 30px rgba(118, 27, 68, 0.11);
+        }
+
+
+        .cabecalho-card {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            cursor: pointer;
+        }
+
+
+        .produto-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+
+        .produto-icone {
+            width: 58px;
+            height: 58px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background-color: #fbdce6;
+
+            font-size: 29px;
+        }
+
+
+        .produto-info h2 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 29px;
+
+            color: #86164d;
+
+            margin-bottom: 5px;
+        }
+
+
+        .produto-info p {
+            color: #71535f;
+
+            font-size: 13px;
+
+            line-height: 1.45;
+
+            max-width: 420px;
+        }
+
+
+        /* =========================================
+           SWITCH
+        ========================================= */
+
+        .ativar-produto {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 13px;
+
+            color: #68143f;
+
+            white-space: nowrap;
+        }
+
+
+        .switch {
+            position: relative;
+
+            width: 42px;
+            height: 22px;
+        }
+
+
+        .switch input {
+            opacity: 0;
+
+            width: 0;
+            height: 0;
+        }
+
+
+        .slider {
+            position: absolute;
+
+            cursor: pointer;
+
+            inset: 0;
+
+            background-color: #d8b0bf;
+
+            border-radius: 30px;
+
+            transition: 0.3s;
+        }
+
+
+        .slider::before {
+            content: "";
+
+            position: absolute;
+
+            width: 16px;
+            height: 16px;
+
+            left: 3px;
+            top: 3px;
+
+            background-color: white;
+
+            border-radius: 50%;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 2px 5px rgba(0,0,0,0.15);
+        }
+
+
+        .switch input:checked + .slider {
+            background-color: #991653;
+        }
+
+
+        .switch input:checked + .slider::before {
+            transform: translateX(20px);
+        }
+
+
+        .seta-card {
+            font-size: 20px;
+
+            color: #8e1a53;
+
+            transition: transform 0.3s;
+        }
+
+
+        .card-produto.aberto .seta-card {
+            transform: rotate(180deg);
+        }
+
+
+        /* =========================================
+           CONTEÚDO DO CARD
+        ========================================= */
+
+        .conteudo-produto {
+            display: none;
+
+            margin-top: 27px;
+
+            padding-top: 25px;
+
+            border-top:
+                1px solid #edc7d4;
+        }
+
+
+        .card-produto.aberto .conteudo-produto {
+            display: block;
+        }
+
+
+        .campos-produto {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .campo-formulario {
+            min-width: 0;
+        }
+
+
+        .campo-formulario label.titulo-campo {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #7c194b;
+
+            margin-bottom: 9px;
+        }
+
+
+        /* =========================================
+           SELECT
+        ========================================= */
+
+        select,
+        input[type="text"] {
+            width: 100%;
+
+            height: 42px;
+
+            border:
+                1px solid #dda5bb;
+
+            border-radius: 8px;
+
+            background-color: white;
+
+            color: #691541;
+
+            padding: 0 12px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 13px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        select:focus,
+        input[type="text"]:focus {
+            border-color: #9b1957;
+
+            box-shadow:
+                0 0 0 3px rgba(155,25,87,0.08);
+        }
+
+
+        /* =========================================
+           OPÇÕES
+        ========================================= */
+
+        .opcoes {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 9px;
+        }
+
+
+        .opcao {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-size: 13px;
+
+            color: #59434c;
+
+            cursor: pointer;
+        }
+
+
+        .opcao input {
+            width: 17px;
+            height: 17px;
+
+            accent-color: #a51f60;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           TEMÁTICA
+        ========================================= */
+
+        .tematica-campo {
+            grid-column: span 2;
+        }
+
+
+        /* =========================================
+           TOTAL
+        ========================================= */
+
+        .total-produto {
+            margin-top: 20px;
+
+            padding: 13px 16px;
+
+            border-radius: 12px;
+
+            background-color: #fde2eb;
+
+            color: #8c1850;
+
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+
+        .total-produto strong {
+            font-size: 18px;
+        }
+
+
+        /* =========================================
+           RESUMO
+        ========================================= */
+
+        .resumo {
+            position: sticky;
+
+            top: 25px;
+
+            background:
+                rgba(255, 248, 250, 0.95);
+
+            border:
+                1px solid #efbfd1;
+
+            border-radius: 25px;
+
+            padding: 27px;
+
+            box-shadow:
+                0 10px 30px rgba(118, 27, 68, 0.09);
+        }
+
+
+        .resumo-titulo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .resumo-icone {
+            font-size: 28px;
+        }
+
+
+        .resumo h2 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 28px;
+
+            color: #86164d;
+        }
+
+
+        .resumo-descricao {
+            font-size: 13px;
+
+            line-height: 1.55;
+
+            color: #71535f;
+
+            margin-bottom: 20px;
+        }
+
+
+        #resumoConteudo {
+            min-height: 300px;
+
+            border:
+                1px dashed #e7aec3;
+
+            border-radius: 18px;
+
+            padding: 18px;
+
+            background-color: #fff7f9;
+        }
+
+
+        .resumo-vazio {
+            min-height: 260px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: #936278;
+
+            gap: 10px;
+        }
+
+
+        .resumo-vazio .icone {
+            font-size: 45px;
+
+            color: #ae2466;
+        }
+
+
+        .resumo-vazio strong {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 17px;
+
+            color: #7d1748;
+        }
+
+
+        /* =========================================
+           ITENS DO RESUMO
+        ========================================= */
+
+        .resumo-item {
+            padding-bottom: 15px;
+
+            margin-bottom: 15px;
+
+            border-bottom:
+                1px solid #edcfda;
+        }
+
+
+        .resumo-item:last-child {
+            border-bottom: none;
+
+            margin-bottom: 0;
+
+            padding-bottom: 0;
+        }
+
+
+        .resumo-item h3 {
+            color: #8b1850;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .resumo-item p {
+            font-size: 12px;
+
+            color: #604852;
+
+            line-height: 1.55;
+        }
+
+
+        /* =========================================
+           BOTÃO FINALIZAR
+        ========================================= */
+
+        .botao-finalizar {
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 16px 20px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #a81d61,
+                    #76113f
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            letter-spacing: 0.4px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 9px 22px rgba(119, 18, 64, 0.25);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        .botao-finalizar:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 13px 27px rgba(119, 18, 64, 0.32);
+        }
+
+
+        .seguranca {
+            text-align: center;
+
+            margin-top: 12px;
+
+            font-size: 11px;
+
+            color: #956174;
+        }
+
+
+        /* =========================================
+           AVISO FINAL
+        ========================================= */
+
+        .aviso {
+            max-width: 1250px;
+
+            margin: 28px auto 0;
+
+            padding: 23px 30px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #fde1ea,
+                    #ffeaf0
+                );
+
+            border-radius: 23px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 17px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .aviso-icone {
+            font-size: 33px;
+
+            color: #a51f60;
+        }
+
+
+        .aviso h3 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: #84164b;
+
+            margin-bottom: 5px;
+        }
+
+
+        .aviso p {
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            color: #674b55;
+        }
+
+
+        /* =========================================
+           MODAL DE CONFIRMAÇÃO
+        ========================================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background-color:
+                rgba(75, 11, 42, 0.55);
+
+            z-index: 100;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+
+        .modal.ativo {
+            display: flex;
+        }
+
+
+        .modal-conteudo {
+            width: 100%;
+
+            max-width: 480px;
+
+            background-color: #fff8fa;
+
+            border-radius: 25px;
+
+            padding: 32px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(60, 10, 36, 0.3);
+        }
+
+
+        .modal-icone {
+            font-size: 45px;
+
+            color: #a51f60;
+
+            margin-bottom: 10px;
+        }
+
+
+        .modal-conteudo h2 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: #82164b;
+
+            font-size: 29px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .modal-conteudo p {
+            color: #674b55;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        .fechar-modal {
+            border: none;
+
+            padding: 12px 28px;
+
+            border-radius: 30px;
+
+            background-color: #8e1850;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           RESPONSIVIDADE
+        ========================================= */
+
+        @media (max-width: 1050px) {
+
+            .area-pedido {
+                grid-template-columns: 1fr;
+            }
+
+            .resumo {
+                position: static;
+            }
+
+            .campos-produto {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            header {
+                height: auto;
+
+                padding: 20px 7%;
+
+                flex-wrap: wrap;
+
+                gap: 15px;
+            }
+
+            nav {
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 25px;
+            }
+
+
+            .introducao {
+                flex-direction: column;
+
+                text-align: center;
+
+                margin-bottom: 40px;
+            }
+
+
+            .intro-texto {
+                width: 100%;
+            }
+
+
+            .descricao-principal {
+                margin: 0 auto;
+            }
+
+
+            .categorias {
+                justify-content: center;
+            }
+
+
+            .intro-imagem {
+                width: 100%;
+
+                max-width: 520px;
+
+                height: 350px;
+            }
+
+
+            .intro-imagem img {
+                height: 320px;
+            }
+
+
+            .frase-foto {
+                right: -5px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .pagina {
+                padding:
+                    55px 5% 60px;
+            }
+
+
+            .logo-nome {
+                font-size: 26px;
+            }
+
+
+            .logo-frase {
+                font-size: 9px;
+            }
+
+
+            nav {
+                gap: 18px;
+            }
+
+
+            nav a {
+                font-size: 13px;
+            }
+
+
+            .instagram {
+                font-size: 19px;
+            }
+
+
+            .titulo-principal {
+                font-size: 45px;
+            }
+
+
+            .categorias {
+                flex-direction: column;
+
+                align-items: center;
+
+                gap: 12px;
+            }
+
+
+            .categoria {
+                border-right: none;
+
+                border-bottom:
+                    1px solid #d98aa8;
+
+                padding:
+                    8px 20px 12px;
+
+                width: 190px;
+            }
+
+
+            .categoria:last-child {
+                border-bottom: none;
+            }
+
+
+            .card-produto {
+                padding: 20px;
+            }
+
+
+            .cabecalho-card {
+                align-items: flex-start;
+            }
+
+
+            .produto-info {
+                align-items: flex-start;
+            }
+
+
+            .produto-info h2 {
+                font-size: 25px;
+            }
+
+
+            .ativar-produto span:not(.slider) {
+                display: none;
+            }
+
+
+            .campos-produto {
+                grid-template-columns: 1fr;
+            }
+
+
+            .tematica-campo {
+                grid-column: span 1;
+            }
+
+
+            .intro-imagem {
+                min-height: 300px;
+
+                height: 300px;
+            }
+
+
+            .intro-imagem img {
+                height: 275px;
+            }
+
+
+            .frase-foto {
+                width: 105px;
+                height: 105px;
+
+                font-size: 11px;
+
+                right: -5px;
+            }
+
+
+            .aviso {
+                align-items: flex-start;
+
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================= -->
+
+    <header>
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-nome">
+                Doces da Geo
+            </span>
+
+            <span class="logo-frase">
+                Doces momentos, sempre!
+            </span>
+
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="pedido.html" class="ativo">
+                Faça seu pedido
+            </a>
+
+            <a
+                href="https://www.instagram.com/docesdageo.ssb/"
+                target="_blank"
+                class="instagram"
+            >
+                ◎
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================= -->
+
+    <main class="pagina">
+
+
+        <!-- decorações -->
+
+        <div class="forma-fundo-1"></div>
+
+        <div class="forma-fundo-2"></div>
+
+
+
+        <!-- =====================================
+             INTRODUÇÃO
+        ====================================== -->
+
+        <section class="introducao">
+
+
+            <div class="intro-texto">
+
+                <span class="mini-titulo">
+                    Vamos preparar algo especial?
+                </span>
+
+
+                <h1 class="titulo-principal">
+
+                    Monte seu pedido
+                    <span>do seu jeito!</span>
+
+                </h1>
+
+
+                <p class="descricao-principal">
+
+                    Escolha o que deseja encomendar.
+                    Você pode fazer seu pedido com apenas
+                    um produto ou combinar diferentes opções
+                    para deixar sua comemoração ainda mais
+                    especial.
+
+                </p>
+
+
+                <div class="categorias">
+
+
+                    <div class="categoria">
+
+                        <div class="categoria-icone">
+                            ♡
+                        </div>
+
+                        <h3>
+                            Bolo
+                        </h3>
+
+                        <p>
+                            Do jeito que você quiser.
+                        </p>
+
+                    </div>
+
+
+                    <div class="categoria">
+
+                        <div class="categoria-icone">
+                            ♧
+                        </div>
+
+                        <h3>
+                            Doces
+                        </h3>
+
+                        <p>
+                            Sabor em cada detalhe.
+                        </p>
+
+                    </div>
+
+
+                    <div class="categoria">
+
+                        <div class="categoria-icone">
+                            ♢
+                        </div>
+
+                        <h3>
+                            Salgados
+                        </h3>
+
+                        <p>
+                            Crocância e muito sabor.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO -->
+
+            <div class="intro-imagem">
+
+                <div class="moldura-imagem"></div>
+
+                <img
+                    src="imagens/bolo.jpg"
+                    alt="Produtos da Doces da Geo"
+                >
+
+                <div class="frase-foto">
+
+                    Aqui tem tudo
+                    para a sua festa
+                    ser inesquecível! ♡
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             ÁREA DOS PRODUTOS + RESUMO
+        ====================================== -->
+
+        <section class="area-pedido">
+
+
+            <!-- =================================
+                 PRODUTOS
+            ================================== -->
+
+            <div class="produtos">
+
+
+                <!-- =================================
+                     BOLO
+                ================================== -->
+
+                <article
+                    class="card-produto"
+                    id="cardBolo"
+                >
+
+                    <div class="cabecalho-card">
+
+                        <div class="produto-info">
+
+                            <div class="produto-icone">
+                                🎂
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Bolo
+                                </h2>
+
+                                <p>
+                                    Escolha a quantidade,
+                                    massa, recheios e a
+                                    temática do seu bolo.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ativar-produto">
+
+                            <span>
+                                Quero encomendar um bolo
+                            </span>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="ativarBolo"
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                            <span class="seta-card">
+                               ⌄
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="conteudo-produto">
+
+
+                        <div class="campos-produto">
+
+
+                            <!-- quantidade -->
+
+                            <div class="campo-formulario">
+
+                                <label
+                                    class="titulo-campo"
+                                    for="pessoasBolo"
+                                >
+                                    Quantidade de pessoas
+                                </label>
+
+                                <select id="pessoasBolo">
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="10">
+                                        10 pessoas
+                                    </option>
+
+                                    <option value="20">
+                                        20 pessoas
+                                    </option>
+
+                                    <option value="30">
+                                        30 pessoas
+                                    </option>
+
+                                    <option value="40">
+                                        40 pessoas
+                                    </option>
+
+                                    <option value="50">
+                                        50 pessoas
+                                    </option>
+
+                                    <option value="60">
+                                        60 pessoas
+                                    </option>
+
+                                    <option value="70">
+                                        70 pessoas
+                                    </option>
+
+                                    <option value="80">
+                                        80 pessoas
+                                    </option>
+
+                                    <option value="90">
+                                        90 pessoas
+                                    </option>
+
+                                    <option value="100">
+                                        100 pessoas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- massa -->
+
+                            <div class="campo-formulario">
+
+                                <label class="titulo-campo">
+                                    Massa
+                                </label>
+
+                                <div class="opcoes">
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="radio"
+                                            name="massa"
+                                            value="Branca"
+                                        >
+
+                                        Branca
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="radio"
+                                            name="massa"
+                                            value="Baunilha"
+                                        >
+
+                                        Baunilha
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="radio"
+                                            name="massa"
+                                            value="Chocolate"
+                                        >
+
+                                        Chocolate
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- recheios -->
+
+                            <div class="campo-formulario">
+
+                                <label class="titulo-campo">
+                                    Recheios (escolha até 2)
+                                </label>
+
+                                <div class="opcoes">
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="recheio"
+                                            value="Brigadeiro"
+                                        >
+
+                                        Brigadeiro
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="recheio"
+                                            value="Beijinho"
+                                        >
+
+                                        Beijinho
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="recheio"
+                                            value="Cocada cremosa"
+                                        >
+
+                                        Cocada cremosa
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="recheio"
+                                            value="Ninho"
+                                        >
+
+                                        Ninho
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- temática -->
+
+                            <div class="campo-formulario tematica-campo">
+
+                                <label
+                                    class="titulo-campo"
+                                    for="tematicaBolo"
+                                >
+                                    Temática da festa
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="tematicaBolo"
+                                    placeholder="Digite a temática..."
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================
+                     DOCES
+                ================================== -->
+
+                <article
+                    class="card-produto"
+                    id="cardDoces"
+                >
+
+                    <div class="cabecalho-card">
+
+                        <div class="produto-info">
+
+                            <div class="produto-icone">
+                                🧁
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Doces
+                                </h2>
+
+                                <p>
+                                    Escolha seus doces e
+                                    defina a quantidade
+                                    desejada.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ativar-produto">
+
+                            <span>
+                                Quero encomendar doces
+                            </span>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="ativarDoces"
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                            <span class="seta-card">
+                               ⌄
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="conteudo-produto">
+
+
+                        <div class="campos-produto">
+
+
+                            <!-- doces -->
+
+                            <div class="campo-formulario">
+
+                                <label class="titulo-campo">
+                                    Escolha os doces
+                                </label>
+
+                                <div class="opcoes">
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="doce"
+                                            value="Ninho"
+                                        >
+
+                                        Ninho
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="doce"
+                                            value="Brigadeiro"
+                                        >
+
+                                        Brigadeiro
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="doce"
+                                            value="Beijinho"
+                                        >
+
+                                        Beijinho
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- quantidade por pessoa -->
+
+                            <div class="campo-formulario">
+
+                                <label
+                                    class="titulo-campo"
+                                    for="docesPorPessoa"
+                                >
+                                    Quantidade por pessoa
+                                </label>
+
+                                <select id="docesPorPessoa">
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="3">
+                                        3 por pessoa
+                                    </option>
+
+                                    <option value="4">
+                                        4 por pessoa
+                                    </option>
+
+                                    <option value="5">
+                                        5 por pessoa
+                                    </option>
+
+                                    <option value="6">
+                                        6 por pessoa
+                                    </option>
+
+                                    <option value="7">
+                                        7 por pessoa
+                                    </option>
+
+                                    <option value="8">
+                                        8 por pessoa
+                                    </option>
+
+                                    <option value="9">
+                                        9 por pessoa
+                                    </option>
+
+                                    <option value="10">
+                                        10 por pessoa
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- pessoas -->
+
+                            <div class="campo-formulario">
+
+                                <label
+                                    class="titulo-campo"
+                                    for="pessoasDoces"
+                                >
+                                    Quantidade de pessoas
+                                </label>
+
+                                <select id="pessoasDoces">
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="10">
+                                        10 pessoas
+                                    </option>
+
+                                    <option value="20">
+                                        20 pessoas
+                                    </option>
+
+                                    <option value="30">
+                                        30 pessoas
+                                    </option>
+
+                                    <option value="40">
+                                        40 pessoas
+                                    </option>
+
+                                    <option value="50">
+                                        50 pessoas
+                                    </option>
+
+                                    <option value="60">
+                                        60 pessoas
+                                    </option>
+
+                                    <option value="70">
+                                        70 pessoas
+                                    </option>
+
+                                    <option value="80">
+                                        80 pessoas
+                                    </option>
+
+                                    <option value="90">
+                                        90 pessoas
+                                    </option>
+
+                                    <option value="100">
+                                        100 pessoas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- total -->
+
+                            <div class="campo-formulario">
+
+                                <label class="titulo-campo">
+                                    Total estimado
+                                </label>
+
+                                <div
+                                    class="total-produto"
+                                    id="totalDoces"
+                                >
+                                    Selecione as quantidades
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================
+                     SALGADOS
+                ================================== -->
+
+                <article
+                    class="card-produto"
+                    id="cardSalgados"
+                >
+
+                    <div class="cabecalho-card">
+
+                        <div class="produto-info">
+
+                            <div class="produto-icone">
+                                🥟
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Salgados
+                                </h2>
+
+                                <p>
+                                    Escolha os salgados
+                                    e a quantidade para
+                                    sua comemoração.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="ativar-produto">
+
+                            <span>
+                                Quero encomendar salgados
+                            </span>
+
+                            <label class="switch">
+
+                                <input
+                                    type="checkbox"
+                                    id="ativarSalgados"
+                                >
+
+                                <span class="slider"></span>
+
+                            </label>
+
+                            <span class="seta-card">
+                               ⌄
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="conteudo-produto">
+
+
+                        <div class="campos-produto">
+
+
+                            <!-- salgados -->
+
+                            <div class="campo-formulario">
+
+                                <label class="titulo-campo">
+                                    Escolha os salgados
+                                </label>
+
+                                <div class="opcoes">
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="salgado"
+                                            value="Pastelzinho de forno"
+                                        >
+
+                                        Pastelzinho de forno
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="salgado"
+                                            value="Coxinhazinha"
+                                        >
+
+                                        Coxinhazinha
+
+                                    </label>
+
+
+                                    <label class="opcao">
+
+                                        <input
+                                            type="checkbox"
+                                            class="salgado"
+                                            value="Bolinho de queijo"
+                                        >
+
+                                        Bolinho de queijo
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- quantidade -->
+
+                            <div class="campo-formulario">
+
+                                <label
+                                    class="titulo-campo"
+                                    for="salgadosPorPessoa"
+                                >
+                                    Quantidade por pessoa
+                                </label>
+
+                                <select id="salgadosPorPessoa">
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="3">
+                                        3 por pessoa
+                                    </option>
+
+                                    <option value="4">
+                                        4 por pessoa
+                                    </option>
+
+                                    <option value="5">
+                                        5 por pessoa
+                                    </option>
+
+                                    <option value="6">
+                                        6 por pessoa
+                                    </option>
+
+                                    <option value="7">
+                                        7 por pessoa
+                                    </option>
+
+                                    <option value="8">
+                                        8 por pessoa
+                                    </option>
+
+                                    <option value="9">
+                                        9 por pessoa
+                                    </option>
+
+                                    <option value="10">
+                                        10 por pessoa
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- pessoas -->
+
+                            <div class="campo-formulario">
+
+                                <label
+                                    class="titulo-campo"
+                                    for="pessoasSalgados"
+                                >
+                                    Quantidade de pessoas
+                                </label>
+
+                                <select id="pessoasSalgados">
+
+                                    <option value="">
+                                        Selecione
+                                    </option>
+
+                                    <option value="10">
+                                        10 pessoas
+                                    </option>
+
+                                    <option value="20">
+                                        20 pessoas
+                                    </option>
+
+                                    <option value="30">
+                                        30 pessoas
+                                    </option>
+
+                                    <option value="40">
+                                        40 pessoas
+                                    </option>
+
+                                    <option value="50">
+                                        50 pessoas
+                                    </option>
+
+                                    <option value="60">
+                                        60 pessoas
+                                    </option>
+
+                                    <option value="70">
+                                        70 pessoas
+                                    </option>
+
+                                    <option value="80">
+                                        80 pessoas
+                                    </option>
+
+                                    <option value="90">
+                                        90 pessoas
+                                    </option>
+
+                                    <option value="100">
+                                        100 pessoas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- total -->
+
+                            <div class="campo-formulario">
+
+                                <label class="titulo-campo">
+                                    Total estimado
+                                </label>
+
+                                <div
+                                    class="total-produto"
+                                    id="totalSalgados"
+                                >
+                                    Selecione as quantidades
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+
+            <!-- =================================
+                 RESUMO
+            ================================== -->
+
+            <aside class="resumo">
+
+
+                <div class="resumo-titulo">
+
+                    <span class="resumo-icone">
+                        ♡
+                    </span>
+
+                    <h2>
+                        Resumo do pedido
+                    </h2>
+
+                </div>
+
+
+                <p class="resumo-descricao">
+
+                    Confira abaixo os itens escolhidos
+                    e suas respectivas informações.
+
+                </p>
+
+
+                <div id="resumoConteudo">
+
+                    <div class="resumo-vazio">
+
+                        <span class="icone">
+                            🧁
+                        </span>
+
+                        <strong>
+                            Seu pedido ainda está vazio...
+                        </strong>
+
+                        <span>
+                            Escolha os produtos ao lado
+                            para ver o resumo aqui.
+                        </span>
+
+                        <span>
+                            ♡
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="botao-finalizar"
+                    id="finalizarPedido"
+                >
+
+                    ✈
+                    &nbsp;
+                    FINALIZAR PEDIDO
+
+                </button>
+
+
+                <p class="seguranca">
+                    ♡ Seu pedido será preparado com carinho!
+                </p>
+
+            </aside>
+
+        </section>
+
+
+
+        <!-- =====================================
+             AVISO
+        ====================================== -->
+
+        <section class="aviso">
+
+            <div class="aviso-icone">
+                ♡
+            </div>
+
+            <div>
+
+                <h3>
+                    Monte do seu jeito!
+                </h3>
+
+                <p>
+                    Você pode escolher apenas um produto
+                    ou combinar bolo, doces e salgados.
+                    O importante é deixar seu momento
+                    especial do seu jeito!
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         MODAL
+    ========================================= -->
+
+    <div
+        class="modal"
+        id="modal"
+    >
+
+        <div class="modal-conteudo">
+
+            <div class="modal-icone">
+                ♡
+            </div>
+
+            <h2>
+                Pedido preparado!
+            </h2>
+
+            <p id="mensagemModal">
+                Seu pedido foi organizado com sucesso.
+            </p>
+
+            <button
+                type="button"
+                class="fechar-modal"
+                id="fecharModal"
+            >
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+    
+        const ativarBolo = document.getElementById("ativarBolo");
+        const ativarDoces = document.getElementById("ativarDoces");
+        const ativarSalgados = document.getElementById("ativarSalgados");
+    
+        const cardBolo = document.getElementById("cardBolo");
+        const cardDoces = document.getElementById("cardDoces");
+        const cardSalgados = document.getElementById("cardSalgados");
+    
+        const resumoConteudo =
+            document.getElementById("resumoConteudo");
+    
+    
+        /* =========================================
+           ABRIR / FECHAR CARDS
+        ========================================= */
+    
+        function atualizarCard(checkbox, card) {
+    
+            if (checkbox.checked) {
+                card.classList.add("aberto");
+            } else {
+                card.classList.remove("aberto");
+            }
+    
+            atualizarResumo();
+        }
+    
+    
+        ativarBolo.addEventListener("change", function () {
+            atualizarCard(ativarBolo, cardBolo);
+        });
+    
+    
+        ativarDoces.addEventListener("change", function () {
+            atualizarCard(ativarDoces, cardDoces);
+        });
+    
+    
+        ativarSalgados.addEventListener("change", function () {
+            atualizarCard(ativarSalgados, cardSalgados);
+        });
+    
+    
+    
+        /* =========================================
+           LIMITAR RECHEIOS A 2
+        ========================================= */
+    
+        const recheios =
+            document.querySelectorAll(".recheio");
+    
+    
+        recheios.forEach(function (recheio) {
+    
+            recheio.addEventListener("change", function () {
+    
+                const selecionados =
+                    document.querySelectorAll(".recheio:checked");
+    
+    
+                if (selecionados.length >= 2) {
+    
+                    recheios.forEach(function (item) {
+    
+                        if (!item.checked) {
+                            item.disabled = true;
+                        }
+    
+                    });
+    
+                } else {
+    
+                    recheios.forEach(function (item) {
+                        item.disabled = false;
+                    });
+    
+                }
+    
+                atualizarResumo();
+    
+            });
+    
+        });
+    
+    
+    
+        /* =========================================
+           CALCULAR DOCES
+        ========================================= */
+    
+        const pessoasDoces =
+            document.getElementById("pessoasDoces");
+    
+        const docesPorPessoa =
+            document.getElementById("docesPorPessoa");
+    
+        const totalDoces =
+            document.getElementById("totalDoces");
+    
+    
+        function calcularDoces() {
+    
+            const pessoas =
+                Number(pessoasDoces.value);
+    
+            const porPessoa =
+                Number(docesPorPessoa.value);
+    
+    
+            if (pessoas && porPessoa) {
+    
+                const total = pessoas * porPessoa;
+    
+                totalDoces.innerHTML =
+                    "<strong>" +
+                    total +
+                    "</strong> doces";
+    
+            } else {
+    
+                totalDoces.innerHTML =
+                    "Selecione as quantidades";
+    
+            }
+    
+            atualizarResumo();
+    
+        }
+    
+    
+        pessoasDoces.addEventListener(
+            "change",
+            calcularDoces
+        );
+    
+    
+        docesPorPessoa.addEventListener(
+            "change",
+            calcularDoces
+        );
+    
+    
+    
+        /* =========================================
+           CALCULAR SALGADOS
+        ========================================= */
+    
+        const pessoasSalgados =
+            document.getElementById("pessoasSalgados");
+    
+        const salgadosPorPessoa =
+            document.getElementById("salgadosPorPessoa");
+    
+        const totalSalgados =
+            document.getElementById("totalSalgados");
+    
+    
+        function calcularSalgados() {
+    
+            const pessoas =
+                Number(pessoasSalgados.value);
+    
+            const porPessoa =
+                Number(salgadosPorPessoa.value);
+    
+    
+            if (pessoas && porPessoa) {
+    
+                const total = pessoas * porPessoa;
+    
+                totalSalgados.innerHTML =
+                    "<strong>" +
+                    total +
+                    "</strong> salgados";
+    
+            } else {
+    
+                totalSalgados.innerHTML =
+                    "Selecione as quantidades";
+    
+            }
+    
+            atualizarResumo();
+    
+        }
+    
+    
+        pessoasSalgados.addEventListener(
+            "change",
+            calcularSalgados
+        );
+    
+    
+        salgadosPorPessoa.addEventListener(
+            "change",
+            calcularSalgados
+        );
+    
+    
+    
+        /* =========================================
+           ATUALIZAR RESUMO
+        ========================================= */
+    
+        function atualizarResumo() {
+    
+            let html = "";
+            let possuiProduto = false;
+    
+    
+            /* =====================================
+               BOLO
+            ===================================== */
+    
+            if (ativarBolo.checked) {
+    
+                possuiProduto = true;
+    
+    
+                const pessoas =
+                    document.getElementById(
+                        "pessoasBolo"
+                    ).value;
+    
+    
+                const massa =
+                    document.querySelector(
+                        'input[name="massa"]:checked'
+                    );
+    
+    
+                const recheiosEscolhidos =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".recheio:checked"
+                        )
+                    ).map(function (item) {
+    
+                        return item.value;
+    
+                    });
+    
+    
+                const tematica =
+                    document.getElementById(
+                        "tematicaBolo"
+                    ).value;
+    
+    
+                html += `
+                    <div class="resumo-item">
+    
+                        <h3>🎂 Bolo</h3>
+    
+                        <p>
+                            <strong>Pessoas:</strong>
+                            ${pessoas || "não informado"}
+                        </p>
+    
+                        <p>
+                            <strong>Massa:</strong>
+                            ${
+                                massa
+                                ? massa.value
+                                : "não informado"
+                            }
+                        </p>
+    
+                        <p>
+                            <strong>Recheios:</strong>
+                            ${
+                                recheiosEscolhidos.length
+                                ? recheiosEscolhidos.join(", ")
+                                : "não informado"
+                            }
+                        </p>
+    
+                        <p>
+                            <strong>Temática:</strong>
+                            ${
+                                tematica || "não informada"
+                            }
+                        </p>
+    
+                    </div>
+                `;
+    
+            }
+    
+    
+    
+            /* =====================================
+               DOCES
+            ===================================== */
+    
+            if (ativarDoces.checked) {
+    
+                possuiProduto = true;
+    
+    
+                const docesEscolhidos =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".doce:checked"
+                        )
+                    ).map(function (item) {
+    
+                        return item.value;
+    
+                    });
+    
+    
+                const pessoas =
+                    pessoasDoces.value;
+    
+    
+                const porPessoa =
+                    docesPorPessoa.value;
+    
+    
+                let total = "";
+    
+                if (pessoas && porPessoa) {
+    
+                    total =
+                        Number(pessoas) *
+                        Number(porPessoa);
+    
+                }
+    
+    
+                html += `
+                    <div class="resumo-item">
+    
+                        <h3>🧁 Doces</h3>
+    
+                        <p>
+                            <strong>Opções:</strong>
+                            ${
+                                docesEscolhidos.length
+                                ? docesEscolhidos.join(", ")
+                                : "não informado"
+                            }
+                        </p>
+    
+                        <p>
+                            <strong>Pessoas:</strong>
+                            ${pessoas || "não informado"}
+                        </p>
+    
+                        <p>
+                            <strong>Quantidade:</strong>
+                            ${
+                                porPessoa
+                                ? porPessoa + " por pessoa"
+                                : "não informada"
+                            }
+                        </p>
+    
+                        ${
+                            total
+                            ? `
+                                <p>
+                                    <strong>Total:</strong>
+                                    ${total} doces
+                                </p>
+                            `
+                            : ""
+                        }
+    
+                    </div>
+                `;
+    
+            }
+    
+    
+    
+            /* =====================================
+               SALGADOS
+            ===================================== */
+    
+            if (ativarSalgados.checked) {
+    
+                possuiProduto = true;
+    
+    
+                const salgadosEscolhidos =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".salgado:checked"
+                        )
+                    ).map(function (item) {
+    
+                        return item.value;
+    
+                    });
+    
+    
+                const pessoas =
+                    pessoasSalgados.value;
+    
+    
+                const porPessoa =
+                    salgadosPorPessoa.value;
+    
+    
+                let total = "";
+    
+                if (pessoas && porPessoa) {
+    
+                    total =
+                        Number(pessoas) *
+                        Number(porPessoa);
+    
+                }
+    
+    
+                html += `
+                    <div class="resumo-item">
+    
+                        <h3>🥟 Salgados</h3>
+    
+                        <p>
+                            <strong>Opções:</strong>
+                            ${
+                                salgadosEscolhidos.length
+                                ? salgadosEscolhidos.join(", ")
+                                : "não informado"
+                            }
+                        </p>
+    
+                        <p>
+                            <strong>Pessoas:</strong>
+                            ${pessoas || "não informado"}
+                        </p>
+    
+                        <p>
+                            <strong>Quantidade:</strong>
+                            ${
+                                porPessoa
+                                ? porPessoa + " por pessoa"
+                                : "não informada"
+                            }
+                        </p>
+    
+                        ${
+                            total
+                            ? `
+                                <p>
+                                    <strong>Total:</strong>
+                                    ${total} salgados
+                                </p>
+                            `
+                            : ""
+                        }
+    
+                    </div>
+                `;
+    
+            }
+    
+    
+    
+            /* =====================================
+               MOSTRAR RESUMO
+            ===================================== */
+    
+            if (possuiProduto) {
+    
+                resumoConteudo.innerHTML = html;
+    
+            } else {
+    
+                resumoConteudo.innerHTML = `
+    
+                    <div class="resumo-vazio">
+    
+                        <span class="icone">
+                            🧁
+                        </span>
+    
+                        <strong>
+                            Seu pedido ainda está vazio...
+                        </strong>
+    
+                        <span>
+                            Escolha os produtos ao lado
+                            para ver o resumo aqui.
+                        </span>
+    
+                        <span>♡</span>
+    
+                    </div>
+    
+                `;
+    
+            }
+    
+        }
+    
+    
+    
+        /* =========================================
+           ATUALIZAR RESUMO AUTOMATICAMENTE
+        ========================================= */
+    
+        document.querySelectorAll(
+            "input, select"
+        ).forEach(function (elemento) {
+    
+            elemento.addEventListener(
+                "change",
+                atualizarResumo
+            );
+    
+            elemento.addEventListener(
+                "input",
+                atualizarResumo
+            );
+    
+        });
+    
+    
+    
+        /* =========================================
+           FINALIZAR PEDIDO
+        ========================================= */
+    
+        const finalizarPedido =
+            document.getElementById(
+                "finalizarPedido"
+            );
+    
+    
+        const modal =
+            document.getElementById("modal");
+    
+    
+        const fecharModal =
+            document.getElementById("fecharModal");
+    
+    
+        const mensagemModal =
+            document.getElementById(
+                "mensagemModal"
+            );
+    
+    
+        finalizarPedido.addEventListener(
+            "click",
+            async function () {
+    
+    
+                /* =====================================
+                   VERIFICAR SE ESCOLHEU ALGUM PRODUTO
+                ===================================== */
+    
+                if (
+                    !ativarBolo.checked &&
+                    !ativarDoces.checked &&
+                    !ativarSalgados.checked
+                ) {
+    
+                    alert(
+                        "Escolha pelo menos um produto para continuar."
+                    );
+    
+                    return;
+    
+                }
+    
+    
+    
+                /* =====================================
+                   MONTAR MENSAGEM
+                ===================================== */
+    
+                let mensagem =
+                    "🍰 *NOVO PEDIDO - DOCES DA GEO* 🍰\n\n";
+    
+    
+                /* =====================================
+                   BOLO
+                ===================================== */
+    
+                if (ativarBolo.checked) {
+    
+                    const pessoas =
+                        document.getElementById(
+                            "pessoasBolo"
+                        ).value;
+    
+    
+                    const massa =
+                        document.querySelector(
+                            'input[name="massa"]:checked'
+                        );
+    
+    
+                    const recheiosEscolhidos =
+                        Array.from(
+                            document.querySelectorAll(
+                                ".recheio:checked"
+                            )
+                        ).map(function (item) {
+    
+                            return item.value;
+    
+                        });
+    
+    
+                    const tematica =
+                        document.getElementById(
+                            "tematicaBolo"
+                        ).value.trim();
+    
+    
+                    if (!pessoas) {
+    
+                        alert(
+                            "Informe a quantidade de pessoas do bolo."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (!massa) {
+    
+                        alert(
+                            "Escolha a massa do bolo."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (
+                        recheiosEscolhidos.length === 0
+                    ) {
+    
+                        alert(
+                            "Escolha pelo menos um recheio para o bolo."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (!tematica) {
+    
+                        alert(
+                            "Informe a temática do bolo."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    mensagem +=
+                        "🎂 *BOLO*\n" +
+                        "• Pessoas: " +
+                        pessoas +
+                        "\n" +
+                        "• Massa: " +
+                        massa.value +
+                        "\n" +
+                        "• Recheios: " +
+                        recheiosEscolhidos.join(", ") +
+                        "\n" +
+                        "• Temática: " +
+                        tematica +
+                        "\n\n";
+    
+                }
+    
+    
+    
+                /* =====================================
+                   DOCES
+                ===================================== */
+    
+                if (ativarDoces.checked) {
+    
+                    const docesEscolhidos =
+                        Array.from(
+                            document.querySelectorAll(
+                                ".doce:checked"
+                            )
+                        ).map(function (item) {
+    
+                            return item.value;
+    
+                        });
+    
+    
+                    const pessoas =
+                        pessoasDoces.value;
+    
+    
+                    const porPessoa =
+                        docesPorPessoa.value;
+    
+    
+                    if (
+                        docesEscolhidos.length === 0
+                    ) {
+    
+                        alert(
+                            "Escolha pelo menos um tipo de doce."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (!pessoas) {
+    
+                        alert(
+                            "Informe a quantidade de pessoas dos doces."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (!porPessoa) {
+    
+                        alert(
+                            "Informe a quantidade de doces por pessoa."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    const total =
+                        Number(pessoas) *
+                        Number(porPessoa);
+    
+    
+                    mensagem +=
+                        "🧁 *DOCES*\n" +
+                        "• Opções: " +
+                        docesEscolhidos.join(", ") +
+                        "\n" +
+                        "• Pessoas: " +
+                        pessoas +
+                        "\n" +
+                        "• Quantidade: " +
+                        porPessoa +
+                        " por pessoa\n" +
+                        "• Total: " +
+                        total +
+                        " doces\n\n";
+    
+                }
+    
+    
+    
+                /* =====================================
+                   SALGADOS
+                ===================================== */
+    
+                if (ativarSalgados.checked) {
+    
+                    const salgadosEscolhidos =
+                        Array.from(
+                            document.querySelectorAll(
+                                ".salgado:checked"
+                            )
+                        ).map(function (item) {
+    
+                            return item.value;
+    
+                        });
+    
+    
+                    const pessoas =
+                        pessoasSalgados.value;
+    
+    
+                    const porPessoa =
+                        salgadosPorPessoa.value;
+    
+    
+                    if (
+                        salgadosEscolhidos.length === 0
+                    ) {
+    
+                        alert(
+                            "Escolha pelo menos um tipo de salgado."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (!pessoas) {
+    
+                        alert(
+                            "Informe a quantidade de pessoas dos salgados."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    if (!porPessoa) {
+    
+                        alert(
+                            "Informe a quantidade de salgados por pessoa."
+                        );
+    
+                        return;
+    
+                    }
+    
+    
+                    const total =
+                        Number(pessoas) *
+                        Number(porPessoa);
+    
+    
+                    mensagem +=
+                        "🥟 *SALGADOS*\n" +
+                        "• Opções: " +
+                        salgadosEscolhidos.join(", ") +
+                        "\n" +
+                        "• Pessoas: " +
+                        pessoas +
+                        "\n" +
+                        "• Quantidade: " +
+                        porPessoa +
+                        " por pessoa\n" +
+                        "• Total: " +
+                        total +
+                        " salgados\n\n";
+    
+                }
+    
+    
+    
+                /* =====================================
+                   FINAL DA MENSAGEM
+                ===================================== */
+    
+                mensagem +=
+                    "💗 Pedido realizado pelo site " +
+                    "da Doces da Geo.";
+    
+    
+    
+                /* =====================================
+                   INSTAGRAM
+                ===================================== */
+    
+                const instagram =
+                    "https://ig.me/m/docesdageo.ssb";
+    
+    
+                /*
+                 * Abrimos o Instagram diretamente
+                 * pela ação do usuário.
+                 *
+                 * Isso evita que o navegador bloqueie
+                 * a abertura da nova aba.
+                 */
+    
+                window.open(
+                    instagram,
+                    "_blank"
+                );
+    
+    
+                /* =====================================
+                   COPIAR PEDIDO
+                ===================================== */
+    
+                try {
+    
+                    await navigator.clipboard.writeText(
+                        mensagem
+                    );
+    
+    
+                    mensagemModal.innerHTML =
+                        "Seu pedido foi preparado e " +
+                        "copiado automaticamente! 💗<br><br>" +
+    
+                        "Abrimos o Instagram da " +
+                        "Doces da Geo. Agora é só abrir " +
+                        "a conversa com a Geovana e colar " +
+                        "a mensagem.";
+    
+    
+                } catch (erro) {
+    
+                    /*
+                     * Caso o navegador não permita
+                     * copiar automaticamente.
+                     */
+    
+                    mensagemModal.innerHTML =
+                        "Seu pedido foi preparado! 💗<br><br>" +
+    
+                        "O navegador não conseguiu copiar " +
+                        "a mensagem automaticamente. " +
+                        "Você pode copiar o pedido abaixo " +
+                        "e enviar pelo Instagram.";
+    
+                }
+    
+    
+                /* =====================================
+                   MOSTRAR MODAL
+                ===================================== */
+    
+                modal.classList.add("ativo");
+    
+    
+                /*
+                 * Criar uma área com a mensagem
+                 * para permitir cópia manual caso
+                 * seja necessário.
+                 */
+    
+                let areaMensagem =
+                    document.getElementById(
+                        "mensagemPedido"
+                    );
+    
+    
+                if (!areaMensagem) {
+    
+                    areaMensagem =
+                        document.createElement(
+                            "textarea"
+                        );
+    
+                    areaMensagem.id =
+                        "mensagemPedido";
+    
+                    areaMensagem.readOnly = true;
+    
+                    areaMensagem.value =
+                        mensagem;
+    
+                    areaMensagem.style.width =
+                        "100%";
+    
+                    areaMensagem.style.height =
+                        "170px";
+    
+                    areaMensagem.style.marginTop =
+                        "15px";
+    
+                    areaMensagem.style.padding =
+                        "12px";
+    
+                    areaMensagem.style.border =
+                        "1px solid #dda5bb";
+    
+                    areaMensagem.style.borderRadius =
+                        "10px";
+    
+                    areaMensagem.style.resize =
+                        "none";
+    
+                    areaMensagem.style.fontFamily =
+                        "Arial, sans-serif";
+    
+                    areaMensagem.style.fontSize =
+                        "12px";
+    
+                    areaMensagem.style.color =
+                        "#68143f";
+    
+                    areaMensagem.style.backgroundColor =
+                        "#fff";
+    
+                    mensagemModal.parentNode.insertBefore(
+                        areaMensagem,
+                        fecharModal
+                    );
+    
+                } else {
+    
+                    areaMensagem.value =
+                        mensagem;
+    
+                }
+    
+            }
+        );
+    
+    
+    
+        /* =========================================
+           FECHAR MODAL
+        ========================================= */
+    
+        fecharModal.addEventListener(
+            "click",
+            function () {
+    
+                modal.classList.remove(
+                    "ativo"
+                );
+    
+            }
+        );
+    
+    
+        modal.addEventListener(
+            "click",
+            function (event) {
+    
+                if (
+                    event.target === modal
+                ) {
+    
+                    modal.classList.remove(
+                        "ativo"
+                    );
+    
+                }
+    
+            }
+        );
+    
+    </script>
+
+
+</body>
+
+</html>
